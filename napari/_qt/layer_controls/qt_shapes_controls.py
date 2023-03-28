@@ -103,7 +103,7 @@ class QtShapesControls(QtLayerControls):
         sld = QSlider(Qt.Orientation.Horizontal)
         sld.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         sld.setMinimum(0)
-        sld.setMaximum(40)
+        sld.setMaximum(200)
         sld.setSingleStep(1)
         value = self.layer.current_edge_width
         if isinstance(value, Iterable):
@@ -428,7 +428,7 @@ class QtShapesControls(QtLayerControls):
         """Receive layer model edge line width change event and update slider."""
         with self.layer.events.edge_width.blocker():
             value = self.layer.current_edge_width
-            value = np.clip(int(value), 0, 40)
+            value = np.clip(int(value), 0, 200)
             self.widthSlider.setValue(value)
 
     def _on_current_edge_color_change(self):
